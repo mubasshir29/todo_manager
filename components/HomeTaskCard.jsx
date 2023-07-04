@@ -7,7 +7,7 @@ function HomeTaskCard({task}) {
         <div className='flex w-full justify-between text-slate-400 font-bold'>
             <p>Time: {task.time}</p>
             <p>Date: {task.date}</p>
-            <span className='bg-emerald-400 font-normal text-white text-sm px-3 py-0 rounded-full'>{task.status}</span>
+            <span className='font-normal text-white text-sm px-3 py-0 rounded-full' style={{backgroundColor:`${task.statusColor}`}}>{task.status}</span>
         </div>
     </div>
   )

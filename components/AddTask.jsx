@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function AddTask() {
+    const [taskContent, setTaskContent] = useState({
+            title:"",
+            description:"",
+            date:"",
+            time:""
+    })
   return (
     <div className='w-full mt-6'>
         <div className='w-full mx-auto bg-slate-100 p-6 flex flex-col gap-4 rounded-lg'>     

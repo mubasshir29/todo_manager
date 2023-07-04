@@ -6,7 +6,7 @@
         "date":"23/06/2023",
         "time":"07:48 PM",
         "status":"New",
-        "statusColor":"emerald-400"
+        "statusColor":"#52EC93"
     },
     {
         "id":"2",
@@ -14,7 +14,7 @@
         "description":"Submit application for coding challenge",
         "date":"23/06/2023",
         "time":"07:48 PM",
-        "status":"pending",
-        "statusColor":"blue-400"
+        "status":"Pending",
+        "statusColor":"#5FABDC"
     }
 ]
