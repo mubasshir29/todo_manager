@@ -43,6 +43,7 @@ function DateTime() {
             </select>
             
         </div>
+        <input type='date'></input>
         </div>
     </div>
   );
