@@ -1,12 +1,14 @@
+'use client'
 import React from 'react'
 import Layout from '@/components/Layout'
 import Head from 'next/head'
 import AddTask from '@/components/AddTask'
 import TasksList from '@/components/TasksList'
-import {getAllTasks} from './../lib/tasks'
+import {getAllTasks} from './../helpers/task'
 import HomeTaskCard from '@/components/HomeTaskCard'
 
 function Home({tasks}) {
+    console.log(tasks)
   return (
     <Layout>
         <Head>
@@ -25,9 +27,9 @@ function Home({tasks}) {
   )
 }
 
-export async function getStaticProps(){
+export async function getServerSideProps(){
     const receivedTask = await getAllTasks()
-    console.log(receivedTask)
+    console.log("Recevied tasks",receivedTask)
     return{
         props:{
             tasks: receivedTask

@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import DateTime from './DateTime'
-import {addTask} from './../lib/tasks'
+import {addTask} from './../helpers/task'
 
 function AddTask() {
     const [taskContent, setTaskContent] = useState({
             title:"",
             description:"",
-            dateAdded:"",
-            timeAdded:"",
+            addedOn:"",
             dateScheduled:"",
-            timeScheduled:""
+            timeScheduled:"",
+            status:""
 
     })
     const onValueChang =(e)=>{
@@ -19,6 +19,8 @@ function AddTask() {
 
     const submitTask = (e)=>{
       e.preventDefault()
+      taskContent.addedOn = (new Date()).toLocaleString()
+      taskContent.status = "New"
       console.log(taskContent)
       addTask(taskContent)
     }
