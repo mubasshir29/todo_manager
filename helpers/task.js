@@ -3,7 +3,7 @@ export const getAllTasks = async () => {
     const response = await fetch('http://localhost:3000/api/tasks')
     const data = await response.json()
     console.log("Get response in helper",data)
-    return data
+    return data.reverse()
     //return response.json()
 }
 

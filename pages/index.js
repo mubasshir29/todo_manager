@@ -1,14 +1,21 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '@/components/Layout'
 import Head from 'next/head'
 import AddTask from '@/components/AddTask'
 import TasksList from '@/components/TasksList'
 import {getAllTasks} from './../helpers/task'
 import HomeTaskCard from '@/components/HomeTaskCard'
+import { VscRefresh } from "react-icons/vsc";
+
 
 function Home({tasks}) {
+    const [receivedTasks,setReceivedTasks] = useState(tasks)
     console.log(tasks)
+    const reloadTasks = async (e) => {
+        const updated = await getAllTasks()
+        setReceivedTasks(updated)
+    }
   return (
     <Layout>
         <Head>
@@ -16,10 +23,14 @@ function Home({tasks}) {
         </Head>
         <section className='flex flex-col gap-4'>
             <AddTask/>
-            <h1 className='w-full text-xl font-bold text-slate-700 text-center '>Tasks</h1>
+            
             <div className='bg-slate-200 p-6 rounded-lg'>
+                <div className='text-xl p-3 flex justify-between'>
+                    <h1 className='w-full text-2xl font-bold text-slate-700 '>Tasks</h1>
+                    <span onClick={(e)=>reloadTasks(e)} className='hover:bg-slate-300 p-2 rounded-lg'><VscRefresh/></span>
+                    </div>
                 <div className='flex flex-col gap-3'>
-                    {tasks && tasks.map(task => <HomeTaskCard task={task} />)}
+                    {receivedTasks && receivedTasks.map(task => <HomeTaskCard task={task} />)}
                 </div>
             </div>
         </section>
