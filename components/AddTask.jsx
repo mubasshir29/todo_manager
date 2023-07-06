@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import DateTime from './DateTime'
 import {addTask} from './../helpers/task'
+import { VscClose } from "react-icons/vsc";
+import { AppContext } from '@/context/context'
+
 
 function AddTask() {
+  const {addNew, toggleAddButton} = useContext(AppContext)
+
     const [taskContent, setTaskContent] = useState({
             title:"",
             description:"",
@@ -34,7 +39,8 @@ function AddTask() {
     }
   return (
     <div className='w-full mt-6'>
-        <div className='w-full mx-auto bg-slate-100 p-6  rounded-lg'>
+        <div className='w-full mx-auto bg-slate-100 p-4  rounded-lg flex flex-col gap-4'>
+          <div onClick={toggleAddButton} className='text-2xl self-end rounded-full bg-slate-200 p-1 hover:bg-slate-300'><VscClose/></div>
           <form className='flex flex-col gap-4' onSubmit={(e)=>submitTask(e)}>     
             <input type='text' name='title' value={taskContent.title} onChange={(e)=>onValueChang(e)} placeholder='Title' className='p-2 text-lg rounded-lg'></input>         
             <textarea rows='3' name='description' value={taskContent.description} onChange={(e)=>onValueChang(e)} placeholder='Description' className='p-2 text-lg rounded-lg resize-none' />

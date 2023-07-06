@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     switch(method){
         case 'POST' :
             const task = req.body
-            console.log("req body" , task)
+            //console.log("req body" , task)
             const response = await addTask(task)
             if(response == true){
                 res.status(200).json({"msg":"successfully added"})
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
             break;
         case 'GET' :
             const data = await getAllTasks()
-            console.log("Data in API", data)
+            //console.log("Data in API", data)
             res.status(200).json(data)
             break;
     }
