@@ -6,7 +6,7 @@ import AddTask from '@/components/AddTask'
 import TasksList from '@/components/TasksList'
 import {getAllTasks} from './../helpers/task'
 import HomeTaskCard from '@/components/HomeTaskCard'
-import { VscRefresh } from "react-icons/vsc";
+import { VscRefresh,VscEdit,VscTrash } from "react-icons/vsc";
 
 import { AppContext } from '@/context/context'
 
@@ -27,10 +27,14 @@ function Home({tasks}) {
         <section className='flex flex-col'>
             {addNew && <AddTask/>}
             
-            <div className='bg-slate-200 p-6 rounded-lg mt-4'>
+            <div className='bg-slate-100 p-6 rounded-lg my-4'>
                 <div className='text-xl p-3 flex justify-between'>
                     <h1 className='w-full text-2xl font-bold text-slate-700 '>Tasks</h1>
-                    <span onClick={(e)=>reloadTasks(e)} className='hover:bg-slate-300 p-2 rounded-lg'><VscRefresh/></span>
+                    <div className='flex gap-3 h-10'>
+                        <span onClick={(e)=>reloadTasks(e)} className='hover:bg-emerald-100  bg-white p-2 rounded-lg border-2 hover:border-emerald-400'><VscEdit/></span>
+                        <span onClick={(e)=>reloadTasks(e)} className='hover:bg-emerald-100 bg-white p-2 rounded-lg border-2 hover:border-emerald-400'><VscTrash/></span>
+                        <span onClick={(e)=>reloadTasks(e)} className='hover:bg-emerald-100 bg-white p-2 rounded-lg border-2 hover:border-emerald-400'><VscRefresh/></span>
+                        </div>
                     </div>
                 <div className='flex flex-col gap-3'>
                     {receivedTasks && receivedTasks.map(task => <HomeTaskCard task={task} />)}
