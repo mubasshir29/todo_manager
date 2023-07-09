@@ -39,7 +39,7 @@ function AddTask() {
     }
   return (
     <div className='w-full mt-6'>
-        <div className='w-full mx-auto bg-slate-200 p-4  rounded-lg flex flex-col gap-4 drop-shadow-md'>
+        <div className='w-full mx-auto bg-slate-200 p-4  rounded-lg flex flex-col gap-4 shadow-md'>
           <div onClick={toggleAddButton} className='text-2xl self-end rounded-full bg-slate-200 p-1 hover:bg-slate-300'><VscClose/></div>
           <form className='flex flex-col gap-4' onSubmit={(e)=>submitTask(e)}>     
             <input type='text' name='title' value={taskContent.title} onChange={(e)=>onValueChang(e)} placeholder='Title' className='p-2 text-lg rounded-lg'></input>         

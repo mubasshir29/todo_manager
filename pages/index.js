@@ -12,7 +12,7 @@ import { AppContext } from '@/context/context'
 
 
 function Home({tasks}) {
-    const {addNew, toggleAddButton} = useContext(AppContext)
+    const {addNew, toggleAddButton,selectedTasks, setSelectTasks} = useContext(AppContext)
     const [receivedTasks,setReceivedTasks] = useState(tasks)
     //console.log(tasks)
     const reloadTasks = async (e) => {
@@ -31,13 +31,13 @@ function Home({tasks}) {
                 <div className='text-xl p-3 flex justify-between'>
                     <h1 className='w-full text-2xl font-bold text-slate-700 '>Tasks</h1>
                     <div className='flex gap-3 h-10'>
-                        <span onClick={(e)=>reloadTasks(e)} className='hover:bg-emerald-100  bg-white p-2 rounded-lg border-2 hover:border-emerald-400'><VscEdit/></span>
-                        <span onClick={(e)=>reloadTasks(e)} className='hover:bg-emerald-100 bg-white p-2 rounded-lg border-2 hover:border-emerald-400'><VscTrash/></span>
+                        {selectedTasks.length==1 && <span onClick={(e)=>reloadTasks(e)} className='hover:bg-emerald-100  bg-white p-2 rounded-lg border-2 hover:border-emerald-400'><VscEdit/></span>}
+                        {selectedTasks.length > 0 && <span onClick={(e)=>reloadTasks(e)} className='hover:bg-emerald-100 bg-white p-2 rounded-lg border-2 hover:border-emerald-400'><VscTrash/></span>}
                         <span onClick={(e)=>reloadTasks(e)} className='hover:bg-emerald-100 bg-white p-2 rounded-lg border-2 hover:border-emerald-400'><VscRefresh/></span>
                         </div>
                     </div>
                 <div className='flex flex-col gap-3'>
-                    {receivedTasks && receivedTasks.map(task => <HomeTaskCard task={task} />)}
+                    {receivedTasks && receivedTasks.map((task,index) => <HomeTaskCard key={index} task={task} />)}
                 </div>
             </div>
         </section>
