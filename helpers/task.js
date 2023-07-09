@@ -7,9 +7,9 @@ export const getAllTasks = async () => {
     //return response.json()
 }
 export const getTask = async (id) => {
-    //console.log("Request in helper")
+    console.log("Request in helper")
     const response = await fetch(`http://localhost:3000/api/tasks/${id}`)
-    const data = await response.json()
+    const data = await response
     console.log("Get response in helper",data)
     return data
     //return response.json()

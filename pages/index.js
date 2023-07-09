@@ -7,17 +7,24 @@ import TasksList from '@/components/TasksList'
 import {getAllTasks} from './../helpers/task'
 import HomeTaskCard from '@/components/HomeTaskCard'
 import { VscRefresh,VscEdit,VscTrash } from "react-icons/vsc";
+import { useRouter } from 'next/router'
 
 import { AppContext } from '@/context/context'
 
 
 function Home({tasks}) {
+    const router = useRouter()
     const {addNew, toggleAddButton,selectedTasks, setSelectTasks} = useContext(AppContext)
     const [receivedTasks,setReceivedTasks] = useState(tasks)
     //console.log(tasks)
     const reloadTasks = async (e) => {
         const updated = await getAllTasks()
         setReceivedTasks(updated)
+    }
+    const navigateToEdit = () => {
+        console.log("Edit buttin clicked")
+        const selectedTaskId = selectedTasks[0]._id
+        router.push(`/task/${selectedTaskId}/edit`)
     }
   return (
     <Layout>
@@ -31,7 +38,7 @@ function Home({tasks}) {
                 <div className='text-xl p-3 flex justify-between'>
                     <h1 className='w-full text-2xl font-bold text-slate-700 '>Tasks</h1>
                     <div className='flex gap-3 h-10'>
-                        {selectedTasks.length==1 && <span onClick={(e)=>reloadTasks(e)} className='hover:bg-emerald-100  bg-white p-2 rounded-lg border-2 hover:border-emerald-400'><VscEdit/></span>}
+                        {selectedTasks.length==1 && <span onClick={navigateToEdit} className='hover:bg-emerald-100  bg-white p-2 rounded-lg border-2 hover:border-emerald-400'><VscEdit/></span>}
                         {selectedTasks.length > 0 && <span onClick={(e)=>reloadTasks(e)} className='hover:bg-emerald-100 bg-white p-2 rounded-lg border-2 hover:border-emerald-400'><VscTrash/></span>}
                         <span onClick={(e)=>reloadTasks(e)} className='hover:bg-emerald-100 bg-white p-2 rounded-lg border-2 hover:border-emerald-400'><VscRefresh/></span>
                         </div>

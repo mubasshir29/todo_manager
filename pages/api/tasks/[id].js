@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     let response;
     switch(method){
         case 'GET':
-            response = await getTask(task)
+            response = await getTask(id)
             if(response){
                 res.status(200).json(response)
                 break;
