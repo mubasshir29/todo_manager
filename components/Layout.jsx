@@ -6,7 +6,7 @@ function Layout({children}) {
   return (
     <>
         <Nav/>
-        <div className='w-[80%] mx-auto flex flex-col gap-6'>{children}</div>
+        <div className='w-[70%] mx-auto flex flex-col gap-6'>{children}</div>
     </>
   )
 }

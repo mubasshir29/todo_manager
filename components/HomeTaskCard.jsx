@@ -33,7 +33,7 @@ function HomeTaskCard({task}) {
   }
   return (
     <div className='bg-white w-full p-4 group flex gap-4 rounded-lg  hover:bg-emerald-100 drop-shadow-md'>
-      <input type='checkbox' id={task._id} onChange={(e)=>taskSelected(e)} />
+      <input type='checkbox' defaultChecked={selectedTasks.some(item => item._id == task._id)} id={task._id} onChange={(e)=>taskSelected(e)} />
       <div className='w-full  flex flex-col gap-1 '>
         <h1 className='text-lg font-bold text-slate-700'>{task.title}</h1>
         <div className='flex w-[90%] justify-between items-center text-slate-400 group-hover:text-slate-700'>
@@ -47,10 +47,6 @@ function HomeTaskCard({task}) {
         </div>
         </div>
     </div>
-    <div className='hidden group-hover:absolute right-0 top-0 group-hover:flex flex-col justify-around group h-full px-3 py-2 text-xl text-slate-500 rounded-r-lg'>
-              <span onClick={(e)=>onEditButton(e)} className='hover:bg-slate-300 p-1 rounded-lg text-slate-400 hover:text-slate-500'><MdEdit/></span>
-              <span onClick={(e)=>onDeleteButton(e)} className='hover:bg-slate-300 p-1 rounded-lg text-slate-400 hover:text-slate-500'><MdDelete/></span>
-            </div>
     </div>
     
   )
