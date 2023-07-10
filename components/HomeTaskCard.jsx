@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { MdDelete,MdEdit } from "react-icons/md";
 import {deleteTask} from './../helpers/task'
 import {AppContext} from './../context/context'
+import Link from 'next/link';
 
 
 function HomeTaskCard({task}) {
@@ -35,6 +36,7 @@ function HomeTaskCard({task}) {
     <div className='bg-white w-full p-4 group flex gap-4 rounded-lg  hover:bg-emerald-100 drop-shadow-md'>
       <input type='checkbox' defaultChecked={selectedTasks.some(item => item._id == task._id)} id={task._id} onChange={(e)=>taskSelected(e)} />
       <div className='w-full  flex flex-col gap-1 '>
+      <Link href={`/task/${task._id}`}>
         <h1 className='text-lg font-bold text-slate-700'>{task.title}</h1>
         <div className='flex w-[90%] justify-between items-center text-slate-400 group-hover:text-slate-700'>
             <p className='w-[30%] text-sm'>Time: {task.timeScheduled}</p>
@@ -46,6 +48,7 @@ function HomeTaskCard({task}) {
           <span className='px-2 text-white rounded-full text-sm' style={task.status == 'Open' ? {backgroundColor:'#05b685'} : {backgroundColor:'#3c4246'}}><p>{task.status}</p></span>
         </div>
         </div>
+        </Link>
     </div>
     </div>
     
