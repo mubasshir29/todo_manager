@@ -57,7 +57,7 @@ function Home({tasks}) {
                         </div>
                     </div>
                 <div className='flex flex-col gap-3'>
-                    {receivedTasks && receivedTasks.map((task,index) =><HomeTaskCard key={index} task={task} />)}
+                    {receivedTasks ? receivedTasks.map((task,index) =><HomeTaskCard key={index} task={task} />) : <h1 className='text-black'>No tasks found, Add now.</h1>}
                 </div>
             </div>
         </section>
